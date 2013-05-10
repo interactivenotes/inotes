@@ -1,5 +1,5 @@
 <p>This is the TimelineView view.</p>
 
 <ul>
-	<li ng-repeat="note in notes">{{note}}</li>
+	<li ng-repeat="note in notes"><a href="#note/{{note.id}}">{{note.text}}</li>
 </ul>
