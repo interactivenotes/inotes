@@ -1,10 +1,7 @@
 (function () {
 	'use strict';
 
-	angular.module('inotesApp', [])
-		/**
-		 * Register the provider for the NoteModel
-		 */
+	angular.module('inotesApp')
 		.provider('NoteModel', function () {
 			this.endpoint = undefined;
 			this.setEnpoint = function (newEndpoint) {
@@ -18,7 +15,7 @@
 					};
 				return {
 					getNoteList: function () {
-						refreshConnection();
+						return [1,2,3,4,5];
 					},
 					getNote: function () {
 						refreshConnection();
