@@ -8,7 +8,17 @@ angular.module('inotesApp')
     // Public API here
     return {
       addNoteId: function (noteId) {
-        dirtyNotes.push(noteId);
+		  var alreadyExistent = false;
+          for(var i=0;i<dirtyNotes.length;i++){
+          	if (dirtyNotes[i] === noteId) {
+          		alreadyExistent = true;
+  				break;
+          	};
+          };
+		  
+		  if(alreadyExistent === false){
+			  dirtyNotes.push(noteId);		  	
+		  }
       },
       removeNoteId: function (noteId) {
         for(var i=0;i<dirtyNotes.length;i++){

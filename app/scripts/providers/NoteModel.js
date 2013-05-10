@@ -15,7 +15,7 @@
 					};
 				return {
 					getNoteList: function () {
-						return [1,2,3,4,5];
+						return [{id: 1, text: "lipsum"}, {id: 2, text: "lupsim"}];
 					},
 					getNote: function () {
 						refreshConnection();
