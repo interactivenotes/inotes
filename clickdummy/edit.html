@@ -1,0 +1,80 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../app/scripts/jq_calls.js"></script>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="../app/styles/normalize.css">
+    <link rel="stylesheet" href="../app/styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="inotesApp">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="components/es5-shim/es5-shim.js"></script>
+      <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container" ng-view>
+    	
+    	<div class="menu_bar">
+    		<div class="left_wrapper">
+    			<button type="button" name="" value="" class="button_show_menu"><span class="entypo-left-open"></span></button>
+    		</div>
+    		<div class="right_wrapper">
+    			
+    			<button type="button" name="" value="" class="button_show_text"><span class="entypo-doc-text"></span></button>
+    			<button type="button" name="" value="" class="button_show_draw"><span class="entypo-brush"></span></button>
+    			<button type="button" name="" value="" class="button_show_menu"><span class="entypo-cog"></span></button>
+    		</div>
+    	</div>
+    	
+    	<div class="view text_edit_view">
+    		<div class="text_area_wrapper">
+    			<textarea rows="10" cols="50">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</textarea>
+    		</div>
+    	</div>
+    	
+    	<div class="view draw_edit_view">
+    		<h1>Drawing</h1>
+    	</div>
+    	
+    	<div class="view option_view">
+    		<h1>Options</h1>
+    		<div class="tool_wrapper">
+    			<button type="button" name="" value="" class="button_tag new_tag">Tag hinzufügen<span class="entypo-plus"></span></button>
+    			<button type="button" name="" value="" class="button_tag new_tag">Notiz löschen<span class="entypo-trash"></span></button>
+    		</div>
+    		<div class="tag_wrapper">
+    			<button type="button" name="" value="" class="button_tag">Mein Tag<span class="entypo-cancel"></span></button>
+    			<button type="button" name="" value="" class="button_tag">Dein Tag<span class="entypo-cancel"></span></button>
+    			<button type="button" name="" value="" class="button_tag">Unser Tag<span class="entypo-cancel"></span></button>
+    		</div>
+    	</div>
+    	
+    </div>
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  </body>
+</html>
