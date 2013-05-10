@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inotesApp')
-  .controller('NoteSaveTextController', function ($scope) {
+  .controller('NoteDeleteTextController', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
