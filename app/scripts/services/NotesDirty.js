@@ -1,35 +1,35 @@
 'use strict';
 
 angular.module('inotesApp')
-  .factory('NotesDirty', function () {
+	.factory('NotesDirty', function () {
 
-    var dirtyNotes = [];
+		var dirtyNotes = [];
 
-    // Public API here
-    return {
-      addNoteId: function (noteId) {
-		  var alreadyExistent = false;
-          for(var i=0;i<dirtyNotes.length;i++){
-          	if (dirtyNotes[i] === noteId) {
-          		alreadyExistent = true;
-  				break;
-          	};
-          };
-		  
-		  if(alreadyExistent === false){
-			  dirtyNotes.push(noteId);		  	
-		  }
-      },
-      removeNoteId: function (noteId) {
-        for(var i=0;i<dirtyNotes.length;i++){
-        	if (dirtyNotes[i] === noteId) {
-        		dirtyNotes.splice(i, 1);
+		// Public API here
+		return {
+			addNoteId: function (noteId) {
+			var alreadyExistent = false;
+				for(var i=0;i<dirtyNotes.length;i++){
+					if (dirtyNotes[i] === noteId) {
+						alreadyExistent = true;
+					break;
+					};
+				};
+
+				if(alreadyExistent === false){
+					dirtyNotes.push(noteId);
+				}
+			},
+			removeNoteId: function (noteId) {
+				for(var i=0;i<dirtyNotes.length;i++){
+					if (dirtyNotes[i] === noteId) {
+						dirtyNotes.splice(i, 1);
 				break;
-        	};
-        };
-      },
-      getNoteIds: function () {
-        return dirtyNotes;
-      }
-    };
-  });
+					};
+				};
+			},
+			getNoteIds: function () {
+				return dirtyNotes;
+			}
+		};
+	});
