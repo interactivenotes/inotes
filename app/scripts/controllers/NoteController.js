@@ -72,12 +72,15 @@
 			$scope.drawStroke = function (stroke) {
 
 					var graphics = drawingCanvas.graphics.setStrokeStyle(stroke.width, 'round', 'round').beginStroke(stroke.color);
-					graphics.moveTo(stroke.points[0].x, stroke.points[1].y);
+					graphics.moveTo(stroke.points[0].x, stroke.points[0].y);
+
 					for (var i = 0, length = stroke.points.length - 1; i < length; i += 2) {
-							var p1 = stroke.points[i];
-							var p2 = stroke.points[i + 1];
-							var midPt = new createjs.Point((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
-							graphics.curveTo(p2.x, p2.y, midPt.x, midPt.y);
+
+                            var p1 = (i == 0)? stroke.points[ i ] : stroke.points[ i - 1 ];
+                            var p2 = stroke.points[i];
+                            var p3 = stroke.points[i + 1];
+
+                            graphics.moveTo(p1.x, p1.y).curveTo(p2.x, p2.y, p3.x, p3.y);
 					}
 					graphics.endStroke();
 			};
@@ -129,7 +132,13 @@
 							color: $scope.color,
 							points: []
 					};
-					$scope.note.drawing.strokes.push(currentStroke);
+
+                    currentStroke.points.push({
+                        x: stage.mouseX,
+                        y: stage.mouseY
+                    });
+
+                    $scope.note.drawing.strokes.push(currentStroke);
 
 					console.info('onMouseDown', oldPt);
 			};
