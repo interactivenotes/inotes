@@ -3,8 +3,7 @@
 
 	angular.module('inotesApp')
 		.provider('NoteProvider', function () {
-			
-			console.log(NotesDirty);
+
 
 			// localStorage.getItem();
 			// localStorage.setItem();

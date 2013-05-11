@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('inotesApp')
-  .controller('NoteController', function ($scope, $location, $routeParams, NoteProvider, NotesDirty) {
+  .controller('NoteController', function ($scope, $location, $routeParams, NoteProvider, NotesDirtyProvider) {
 
 	  if($routeParams.noteId === ''){
 		  $location.path('/');
@@ -10,12 +10,12 @@ angular.module('inotesApp')
 
 	  // var noteId = $routeParams.noteId,
 	  // currentNote = NoteProvider.getNote(noteId);
-	  
-	  
 
-	  NotesDirty.addNoteId($routeParams.noteId);
-	  
+
+
+	  NotesDirtyProvider.addNoteId($routeParams.noteId);
+
 	  console.info('Dirty notes:')
-	  console.info(NotesDirty.getNoteIds());
+	  console.info(NotesDirtyProvider.getNoteIds());
 
   });
