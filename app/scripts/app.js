@@ -21,5 +21,9 @@
 				.otherwise({
 					redirectTo: '/'
 				});
+		}).run(function (Note) {
+	  	  //@todo move to somewhere where it's only called once!
+	  	  Note.initStorage();
+		  console.log('harrrr');
 		});
 }());
