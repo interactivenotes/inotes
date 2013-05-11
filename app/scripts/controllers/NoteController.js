@@ -46,20 +46,20 @@
 				};
 			}
 
-			this.showDrawing = function () {
-					this.clearDrawing();
+			$scope.showDrawing = function () {
+					$scope.clearDrawing();
 
 					for (var i = 0, length = $scope.note.drawing.strokes.length; i < length; ++i) {
 							var stroke = $scope.note.drawing.strokes[i];
 							if (stroke) {
-								this.drawStroke(stroke);
+								$scope.drawStroke(stroke);
 							}
 					}
 
 					stage.update();
 			};
 
-			this.clearDrawing = function () {
+			$scope.clearDrawing = function () {
 
 					if (stage.contains(title)) {
 							stage.clear();
@@ -69,7 +69,7 @@
 					stage.update();
 			};
 
-			this.drawStroke = function (stroke) {
+			$scope.drawStroke = function (stroke) {
 
 					var graphics = drawingCanvas.graphics.setStrokeStyle(stroke.width, 'round', 'round').beginStroke(stroke.color);
 					graphics.moveTo(stroke.points[0].x, stroke.points[1].y);
@@ -116,7 +116,7 @@
 			stage.addChild(title);
 			stage.addChild(drawingCanvas);
 
-			this.showDrawing();
+			$scope.showDrawing();
 
 			$scope.onMouseDown = function() {
 
@@ -158,7 +158,7 @@
 			$scope.onMouseUp = function() {
 					isDrawing = false;
 					currentStroke = null;
-					Note.saveNote($scope.note, 'local');
+					$scope.saveNote($scope.note, 'local');
 			};
 
             canvas.addEventListener('touchstart', function () {
