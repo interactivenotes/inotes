@@ -7,7 +7,8 @@
 			this.$get = function () {
 				return {
 					getNoteKeys: function () {
-						return JSON.parse(localStorage.getItem('noteKeys'));
+						var noteKeys = JSON.parse(localStorage.getItem('noteKeys'));
+						return noteKeys ? noteKeys : [];
 					},
 					saveNoteKeys: function (noteKeys) {
 						console.log('saveNoteKeys');
@@ -15,8 +16,9 @@
 						localStorage.setItem('noteKeys', JSON.stringify(noteKeys));
 					},
 					generateId: function () {
-						var s = [],
-					    	hexDigits = "0123456789abcdef";
+						var
+							s = [],
+					    hexDigits = "0123456789abcdef";
 					    for (var i = 0; i < 36; i++) {
 					        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
 					    }
@@ -24,8 +26,8 @@
 					},
 					createNote: function () {
 						var id = this.generateId();
-						
-						return {id: id};
+
+						return {id: id, creationDate: new Date().toISOString()};
 					},
 					getNoteList: function () {
 						console.log('getNoteList');
@@ -34,7 +36,7 @@
 						for (var noteKey in noteKeys) {
 							ret.push(JSON.parse(localStorage.getItem(noteKeys[noteKey])));
 						}
-						
+
 						return ret;
 					},
 					getNote: function (noteKey) {
@@ -52,7 +54,15 @@
 							default:
 								localStorage.setItem(note['id'], JSON.stringify(note));
 								var noteKeys = this.getNoteKeys();
-								noteKeys.push(note['id']);
+								console.log('Notes Keys');
+								console.log(noteKeys);
+								var isInArray = false;
+								for(var i=0; i<noteKeys.length; i++) {
+									if (noteKeys[i] == note['id']) {
+										isInArray = true;
+									}
+								}
+								isInArray ? null : noteKeys.push(note['id']) ;
 								//Store TOC in local storage
 								this.saveNoteKeys(noteKeys);
 						}
@@ -69,7 +79,7 @@
 							default:
 
 								localStorage.removeItem(noteKey);
-								
+
 								//update TOC
 								var noteKeys = this.getNoteKeys();
 								for (var i=0; i < noteKeys.length; i++) {
