@@ -3,9 +3,27 @@
 
 	angular.module('inotesApp')
 		.provider('Note', function () {
-
-			this.$get = function () {
+			
+			this.endpoint = 'http://192.168.0.87/web/app_dev.php/inotes/user/noob/';
+			this.setEndpoint = function (endpoint) {
+				this.endpoint = endpoint;
+			}
+			
+			this.$get = function ($http) {
+				var endpoint = this.endpoint;
 				return {
+					initStorage: function () {
+						var notes = [],
+							noteKeys = [];
+
+						try{
+							//Fetch all notes from remote and store locally
+							this.getNoteListRemote();
+						}catch (e) {
+			
+						}
+
+					},
 					getNoteKeys: function () {
 						var noteKeys = JSON.parse(localStorage.getItem('noteKeys'));
 						return noteKeys ? noteKeys : [];
@@ -48,6 +66,27 @@
 
 						return ret;
 					},
+					getNoteListRemote: function () {
+						var instance = this;
+						$http.get(endpoint + 'list', {})
+						.success(function (data, status, headers, config) {
+							var notes = data.notes,
+							noteKeys = [];
+							//Delete locally stored notes
+							localStorage.clear();
+							
+							for(var note in notes){
+								instance.saveNote(notes[note], 'local');
+								noteKeys.push(notes[note].id);
+							}
+											
+							instance.saveNoteKeys(noteKeys);
+						})
+						.error(function (data, status, headers, config) {
+							console.log('Error fetching remote notes');
+							throw 'Error fetching remote notes';
+						});
+					},
 					getNote: function (noteKey) {
 						var note = JSON.parse(localStorage.getItem(noteKey));
 						if (!note) {
@@ -64,7 +103,7 @@
 						//so there's no break!!!
 						switch (mode) {
 							case 'remote':
-								//NoteRemoteProvider.saveNote(note);
+								NoteRemoteProvider.saveNote(note);
 							case 'local':
 							default:
 								localStorage.setItem(note['id'], JSON.stringify(note));
