@@ -32,3 +32,19 @@ $(document).ready(function() {
 	$('.big_note').css({'height':cwb+'px'});
 	
 }); 
+
+$(window).bind( 'orientationchange', function(e){
+    if ($.event.special.orientationchange.orientation() == "portrait") {
+        var cws = $('.small_note').width();
+		$('.small_note').css({'height':cws+'px'});
+	
+		var cwb = cws*2;
+		$('.big_note').css({'height':cwb+'px'});
+    } else {
+      	var cws = $('.small_note').width();
+		$('.small_note').css({'height':cws+'px'});
+	
+		var cwb = cws*2;
+		$('.big_note').css({'height':cwb+'px'});
+    }
+});

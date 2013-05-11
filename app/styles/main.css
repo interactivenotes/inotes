@@ -33,7 +33,7 @@ h1{
 
 /** transitions */
 	
-button{
+button, .lane .note{
 	-webkit-transition: all 300ms ease-in;
 	-moz-transition: all 300ms ease-in;
 	-ms-transition: all 300ms ease-in;
@@ -180,11 +180,6 @@ button:hover, button:active{
 	background-color: #555;
 	width: 50%;
 	float: left;
-}
-
-
-.lane .note:hover, .lane .note:active{
-	opacity: 
 }
 
 .lane .big_note{
