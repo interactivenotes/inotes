@@ -33,7 +33,7 @@ h1{
 }
 
 /** transitions */
-	
+
 button, button span, .note_wrapper, .lane .note{
 	-webkit-transition: all 300ms ease-in;
 	-moz-transition: all 300ms ease-in;
@@ -63,7 +63,7 @@ button{
 	width: 100%;
 	background: #555;
 	-webkit-box-shadow: 0 0 0.5em 0 #777777;
-	box-shadow: 0 0 0.5em 0 #777777; 
+	box-shadow: 0 0 0.5em 0 #777777;
 }
 
 .menu_bar .left_wrapper{
@@ -80,7 +80,7 @@ button{
 	margin: 0 1em;
 	line-height: 2.5em;
 	color: #fff;
-}	
+}
 
 .menu_bar button{
 	font-size: 1.5em;
@@ -104,6 +104,11 @@ button{
 .button_show_draw{}
 
 
+
+.container {
+	margin-top: 3em;
+}
+
 /* edit views */
 
 .view{
@@ -116,14 +121,14 @@ button{
 /** Text */
 
 .text_edit_view{
-	
+
 }
 
 .text_area_wrapper{
 	padding: 1em;
 }
 
-.text_edit_view textarea{
+.container textarea{
 	display: block;
 	border: 0;
 	width: 100%;
@@ -131,14 +136,14 @@ button{
 
 
 /** Draw */
-	
+
 .draw_edit_view{
-	
+
 }
 
 
 /** Options */
-	
+
 .option_view{
 
 }
@@ -156,7 +161,7 @@ button{
 
 .button_tag{
 	margin: 0.25em 2.5em 0.25em 0;
-	padding: 0 0 0 0.75em;	
+	padding: 0 0 0 0.75em;
 	line-height: 2.5em;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -202,7 +207,7 @@ button{
 }
 
 .tool_wrapper .button_tag{
-	padding: 0 0.75em 0 0 ;	
+	padding: 0 0.75em 0 0 ;
 }
 
 .tool_wrapper .button_tag span{
@@ -213,7 +218,7 @@ button{
 
 
 /** timeline */
-	
+
 
 .lane{
 	width: 100%;
@@ -239,7 +244,7 @@ button{
 
 .note_preview{
 	padding: 1em;
-	
+
 }
 
 .big_note .note_preview{
@@ -286,12 +291,12 @@ button{
 	.note_wrapper{
 		width:100%;
 	}
-	
+
 	.tool_wrapper button{
 		float: none;
 		width: 100%;
 	}
-	
+
 	.option_view .tool_wrapper{
 		margin: 1.25em 0em 2.5em 0em;
 	}
