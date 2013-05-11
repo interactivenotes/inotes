@@ -1,4 +1,5 @@
-'use strict';
+(function () {
+	'use strict';
 
 angular.module('inotesApp')
   .controller('NoteListController', function ($scope, Note, NoteRemote, InitStorageService) {
@@ -7,5 +8,7 @@ angular.module('inotesApp')
 	  
 	  $scope.noteList = Note.getNoteList();
 	  
-	  console.log($scope.noteList);
   });
+
+}());
+
