@@ -185,20 +185,22 @@
 						$location.path('/');
 					}
 
-				/*$scope.displayDrawingArea = function () {
+				$scope.displayDrawingArea = function () {
 
 				var canvas = document.getElementById("drawing").style.display = 'block';
 				var textarea = document.getElementById("textarea").style.display = 'none';
+				var canvas = document.getElementById("drawingControls").style.display = 'block';
 
 				}
 
 
 				$scope.displayTextArea = function () {
-
+					// TODO use the highlght class to show the active element
 				var canvas = document.getElementById("drawing").style.display = 'none';
 				var textarea = document.getElementById("textarea").style.display ='block';
+				var canvas = document.getElementById("drawingControls").style.display = 'none';
 
-				}*/
+				}
 
 		});
 }(this));
