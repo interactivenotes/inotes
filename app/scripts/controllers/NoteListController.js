@@ -1,6 +1,8 @@
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('inotesApp')
-  .controller('NoteListController', function ($scope, NoteModel) {
-	  $scope.notes = NoteModel.getNoteList();
-  });
+	angular.module('inotesApp')
+		.controller('NoteListController', function ($scope, NoteProvider) {
+			$scope.notes = NoteProvider.getNoteList();
+		});
+}());

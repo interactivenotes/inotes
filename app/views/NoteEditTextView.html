@@ -1,1 +1,5 @@
-<p>This is the NoteEditTextView view.</p>
+<div ng-controller="NoteEditController" class="view text_edit_view">
+    <div class="text_area_wrapper">
+			<textarea rows="10" cols="50" ng-change="saveNote()">{{note.text}}</textarea>
+    </div>
+</div>
