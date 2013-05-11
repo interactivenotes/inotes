@@ -1,0 +1,56 @@
+<!DOCTYPE html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style></head><body><!--<![endif]--><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style></head>
+  <body ng-app="inotesApp" class="ng-scope">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="components/es5-shim/es5-shim.js"></script>
+      <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container" ng-view=""><h2 id="note-text" class="ng-scope">Note Text</h2>
+<p class="ng-scope">This is the NoteDetailView view.</p>
+
+<h2 id="note-drawing" class="ng-scope">Note Drawing</h2>
+
+        <div class="toolbar ng-scope">
+            <div class="color" style="background:#828b20; width: 10px; height: 10px;"></div>
+            <div class="btn-group">
+                <!-- ngRepeat: color in colors --><input style="float: left; width: 10px; height: 10px; display: block; background: #828b20; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#828b20" name="005"><input style="float: left; width: 10px; height: 10px; display: block; background: #b0ac31; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#b0ac31" name="007"><input style="float: left; width: 10px; height: 10px; display: block; background: #cbc53d; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#cbc53d" name="009"><input style="float: left; width: 10px; height: 10px; display: block; background: #fad779; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#fad779" name="00B"><input style="float: left; width: 10px; height: 10px; display: block; background: #f9e4ad; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#f9e4ad" name="00D">
+            </div>
+            <pre class="ng-binding">5</pre>
+            <input id="" type="range" min="5" max="30" step="5" ng-model="strokeWidth" class="ng-pristine ng-valid">
+        </div>
+<canvas id="drawing" width="960" height="400" ng-mousedown="onMouseDown()" ng-mousemove="onMouseMove()" ng-mouseup="onMouseUp()" class="ng-scope"></canvas>
+
+<h2 id="note-options" class="ng-scope">Note Options</h2>
+
+</div>
+
+ 
+
+</body></body></html>
