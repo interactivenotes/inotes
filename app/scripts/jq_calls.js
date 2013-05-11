@@ -32,13 +32,14 @@ $(document).ready(function() {
 		$('.button_show_text').removeClass('highlight');
 	}); 
 	
-	
-	
 	var cws = $('.small_note').width();
 	$('.small_note').css({'height':cws+'px'});
 	
 	var cwb = cws*2;
 	$('.big_note').css({'height':cwb+'px'});
+
+
+	
 
 }); 
 

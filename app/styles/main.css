@@ -33,6 +33,12 @@ h1{
 	margin: 0 0 0.625em 0;
 }
 
+a{
+	text-decoration: none;
+	outline: none;
+	color: #555;
+}
+
 /** transitions */
 	
 button, button span, .note_wrapper, .lane .note{
@@ -83,7 +89,7 @@ button{
 	color: #fff;
 }	
 
-.menu_bar button{
+.menu_bar button, .toolbar button{
 	font-size: 1.5em;
 	height: 1.666em;
 	line-height: 1.666em;
@@ -92,7 +98,9 @@ button{
 	background: transparent;
 }
 
-.menu_bar button:hover, .menu_bar button:active, .menu_bar .highlight{
+.menu_bar button:hover, .menu_bar button:active, .menu_bar .highlight,
+.toolbar button:hover, .toolbar button:active
+{
 	background: #0099cc;
 }
 
@@ -128,13 +136,6 @@ button{
 	display: block;
 	border: 0;
 	width: 100%;
-}
-
-
-/** Draw */
-	
-.draw_edit_view{
-	
 }
 
 
@@ -238,9 +239,15 @@ button{
 	width: 100%;
 }
 
+.note a{
+	display: block;
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
 .note_preview{
 	padding: 1em;
-	
 }
 
 .big_note .note_preview{
@@ -308,4 +315,52 @@ button{
 }
 
 
+/** draw */
+	
+.toolbar{
+	position: fixed;
+	bottom: 0;
+	background-color: #555;
+	min-height: 2.5em;
+	z-index: 9999;
+	width: 100%;
+	background: #555;
+	-webkit-box-shadow: 0 0 0.5em 0 #777777;
+	box-shadow: 0 0 0.5em 0 #777777; 
+}
 
+.option_bar{
+	float: left;
+	width: 100%;
+	background-color: #ccc;
+}
+
+/** draw size */
+
+.size_bar{
+	
+}
+
+.size_number{
+	display: block;
+	float: left;
+	margin: 0;
+	height: 2.5em;
+	line-height: 2.5em;
+	width: 2.5em;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.size_slider{
+	display: block;
+	float: left;
+}
+
+
+
+/** draw color */
+	
+.color_bar{
+	display: none;
+}
