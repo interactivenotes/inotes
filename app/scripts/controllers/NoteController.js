@@ -21,7 +21,7 @@
 					$scope.note = Note.createNote();
 					/*console.log('Note not found using id ' + $routeParams.noteId);*/
 				} else {
-					console.log('Restored note using id ' + $routeParams.noteId);
+					/*console.log('Restored note using id ' + $routeParams.noteId);*/
 				}
 			} else {
 				$scope.note = Note.createNote();
@@ -29,13 +29,13 @@
 
 			$scope.saveNote = function () {
 				Note.saveNote($scope.note, 'local');
-				console.log($scope.note);
+				/*console.log($scope.note);*/
 				$scope.note.modificationDate = new Date().toISOString();
 				if (location.hash.search($scope.note.id) === -1) {
 					location.hash = location.hash + $scope.note.id;
 					//$location.url(currUrl + $scope.note.id);
 				}
-				console.log('Saved note with id ' + $scope.note.id);
+				/*console.log('Saved note with id ' + $scope.note.id);*/
 			};
 
 			$scope.deleteNote = function() {
@@ -140,7 +140,7 @@
 
                     $scope.note.drawing.strokes.push(currentStroke);
 
-					console.info('onMouseDown', oldPt);
+					/*console.info('onMouseDown', oldPt);*/
 			};
 
 			$scope.onMouseMove = function() {

@@ -1,5 +1,27 @@
-<p>This is the TimelineView view.</p>
+<div class="lane">
+    <div ng-repeat="noteGroup in noteGroups">
+		<div class="note_wrapper">
+			<div class="note big_note color_{{noteGroup.bigNote.classIndex}}">
+				<a href="#/note/{{noteGroup.bigNote.note.id}}">
+				<div class="note_preview">
+					{{noteGroup.bigNote.note.text}}
+				</div>
+				</a>
+			</div>
+		</div>
+		<div class="note_wrapper">
+			<div ng-repeat="smallNote in noteGroup.smallNotes" class="note small_note color_{{smallNote.classIndex}}">
+				<a href="#/note/{{smallNote.note.id}}">
+				<div class="note_preview">
+					{{smallNote.note.text}}
+				</div>
+				</a>
+			</div>
+		</div>
+    </div>
+</div>
 
-<ul>
+
+<!-- <ul>
 	<li ng-repeat="note in noteList"><a href="#note/{{note.id}}">{{note.text}}</li>
-</ul>
+</ul> -->

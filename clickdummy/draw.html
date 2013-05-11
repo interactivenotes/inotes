@@ -4,6 +4,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/normalize.css">
@@ -32,24 +33,42 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""><h2 id="note-text" class="ng-scope">Note Text</h2>
-<p class="ng-scope">This is the NoteDetailView view.</p>
+    <div class="container" ng-view="">
 
-<h2 id="note-drawing" class="ng-scope">Note Drawing</h2>
 
+	<div class="view draw_edit_view">
+    		
+    	
         <div class="toolbar ng-scope">
-            <div class="color" style="background:#828b20; width: 10px; height: 10px;"></div>
-            <div class="btn-group">
-                <!-- ngRepeat: color in colors --><input style="float: left; width: 10px; height: 10px; display: block; background: #828b20; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#828b20" name="005"><input style="float: left; width: 10px; height: 10px; display: block; background: #b0ac31; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#b0ac31" name="007"><input style="float: left; width: 10px; height: 10px; display: block; background: #cbc53d; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#cbc53d" name="009"><input style="float: left; width: 10px; height: 10px; display: block; background: #fad779; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#fad779" name="00B"><input style="float: left; width: 10px; height: 10px; display: block; background: #f9e4ad; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#f9e4ad" name="00D">
-            </div>
-            <pre class="ng-binding">5</pre>
-            <input id="" type="range" min="5" max="30" step="5" ng-model="strokeWidth" class="ng-pristine ng-valid">
+        	
+        	
+        	<div class="option_bar color_bar">
+        		<div class="color" style="background:#828b20; width: 10px; height: 10px;"></div>
+            	<div class="btn-group">
+                	<!-- ngRepeat: color in colors -->
+                	<input style="float: left; width: 10px; height: 10px; display: block; background: #828b20; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#828b20" name="005"><input style="float: left; width: 10px; height: 10px; display: block; background: #b0ac31; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#b0ac31" name="007"><input style="float: left; width: 10px; height: 10px; display: block; background: #cbc53d; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#cbc53d" name="009"><input style="float: left; width: 10px; height: 10px; display: block; background: #fad779; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#fad779" name="00B"><input style="float: left; width: 10px; height: 10px; display: block; background: #f9e4ad; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary ng-scope ng-pristine ng-valid" ng-model="$parent.color" value="#f9e4ad" name="00D">
+            	</div>
+        	</div>
+        	
+        	<div class="option_bar size_bar">
+        		<pre class="ng-binding size_number">5</pre>
+            	<input id="" type="range" min="5" max="30" step="5" ng-model="strokeWidth" class="ng-pristine ng-valid size_slider">
+        	</div>
+        	
+        	<button type="button" name="" value="" class="button_show_color"><span class="entypo-palette"></span></button>
+        	<button type="button" name="" value="" class="button_show_size"><span class="entypo-record"></span></button>
+        	
+        	
+            
         </div>
         
-<canvas id="drawing" width="960" height="400" ng-mousedown="onMouseDown()" ng-mousemove="onMouseMove()" ng-mouseup="onMouseUp()" class="ng-scope"></canvas>
+		<canvas id="drawing" width="960" height="400" ng-mousedown="onMouseDown()" ng-mousemove="onMouseMove()" ng-mouseup="onMouseUp()" class="ng-scope"></canvas>
+
+		
 
 
+	</div>
 
- 
+ 	</div>
 
 </body></html>
