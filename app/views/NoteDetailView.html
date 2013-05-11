@@ -1,23 +1,24 @@
-<h2 id="note-text">Note Text</h2>
-<div ng-controller="NoteEditTextController" class="view text_edit_view">
-	<div class="text_area_wrapper" >
-		<p ng-model="note.id">Note id {{note.id}}</p>
-		<textarea rows="10" cols="50" ng-model="note.text" ng-change="saveNote()">{{note.text}}</textarea>
-	</div> 
-</div>
+    <h2 id="note-text">Note Text</h2>
 
-<p><button ng-click="saveNote()">Save Note</button></p>
-<p><button ng-click="deleteNote()">Delete Note</button></p>
+    <div ng-controller="NoteEditTextController" class="view text_edit_view">
+        <div class="text_area_wrapper" >
+            <p ng-model="note.id">Note id {{note.id}}</p>
+            <textarea rows="10" cols="50" ng-model="note.text" ng-change="saveNote()">{{note.text}}</textarea>
+        </div>
+    </div>
 
-<h2 id="note-drawing">Note Drawing</h2>
+    <p><button ng-click="saveNote()">Save Note</button></p>
+    <p><button ng-click="deleteNote()">Delete Note</button></p>
+
+    <h2 id="note-drawing">Note Drawing</h2>
 
 	<div class="toolbar">
 		<div class="color" style="background:{{color}}; width: 10px; height: 10px;"></div>
 		<div class="btn-group">
 			<input style="float: left; width: 10px; height: 10px; display: block; background: {{color}}; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary" ng-model="$parent.color" value="{{color}}">
 		</div>
-		<pre>{{strokeWidth}}</pre>
-		<input id="" type="range" min="{{strokeStyle.minWidth}}" max="{{strokeStyle.maxWidth}}" step="{{strokeStyle.step}}" ng-model="strokeWidth" />
+		<div class="current-stroke" style="clear: left; width: {{strokeWidth}}px; height:{{strokeWidth}}px; border-radius: {{visualizeStrokeWidth()}}px; background: {{color}}"></div>
+		<input class="stroke-slider" id="" type="range" min="{{strokeStyle.minWidth}}" max="{{strokeStyle.maxWidth}}" step="{{strokeStyle.step}}" ng-model="strokeWidth" />
 	</div>
 <canvas id="drawing" width="960" height="400" ng-mousedown="onMouseDown()" ng-mousemove="onMouseMove()" ng-mouseup="onMouseUp()"></canvas>
 
