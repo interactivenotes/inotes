@@ -2,33 +2,66 @@
 	'use strict';
 
 	angular.module('inotesApp')
-		.provider('NoteModel', function () {
-			this.endpoint = undefined;
-			this.setEnpoint = function (newEndpoint) {
-				this.endpoint = newEndpoint;
-			};
-			this.notes = [];
+		.provider('NoteProvider', function () {
+
+			// localStorage.getItem();
+			// localStorage.setItem();
+
+			//Delete locally stored notes
+			localStorage.clear();
+
+			//Fetch all notes from remote and store locally
+
+			//Build noteKeys (from server list)
+
+			this.noteKeys = localStorage.getItem('noteKeys');
+
+
 			this.$get = function () {
-				var
-					endpoint = this.endpoint,
-					refreshConnection = function () {
-						//reconnect to endpoint
-					};
 				return {
 					getNoteList: function () {
-						return [{id: 1, text: "lipsum"}, {id: 2, text: "lupsim"}];
+						var
+							ret = [];
+						for (noteKey in noteKeys) {
+							ret.push(JSON.parse(localStorage.getItem(noteKey)));
+						}
+						return ret;
+
 					},
-					getNote: function () {
-						refreshConnection();
+					getNote: function (noteKey) {
+						return JSON.parse(localStorage.getItem(noteKey));
 					},
-					saveNote: function () {
-						refreshConnection();
+					saveNote: function (note, mode) {
+						mode = mode || 'local';
+
+						//Remote notes are *always' stored remotely and locally
+						//so there's no break!!!
+						switch (mode) {
+							case 'remote':
+								NoteRemoteProvider.saveNote(note);
+							case 'local':
+							default:
+								localStorage.setItem(note.id, JSON.stringify(note));
+						}
 					},
-					deleteNote: function () {
-						refreshConnection();
+					deleteNote: function (noteKey, mode) {
+						mode = mode || 'local';
+
+						//Remote notes are *always* deleted remotely and locally
+						//so there's no break!!!
+						switch (mode) {
+							case 'remote':
+								NoteRemoteProvider.deleteNote(noteKey);
+							case 'local':
+							default:
+								localStorage.removeItem(noteKey);
+						}
+
+					},
+					saveDirtyNotes: function(){
+
 					}
 				};
 			};
 		});
 }());
-

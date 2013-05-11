@@ -1,1 +1,157 @@
 /* Will be compiled down to a single stylesheet with your sass files */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin,latin-ext);
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+
+body{
+	-webkit-text-size-adjust: none;
+}
+
+
+
+
+/** content stuff */
+
+body, button, textarea{
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.5em;
+}
+
+h1{
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+
+/** transitions */
+	
+button{
+	-webkit-transition: all 300ms ease-in;
+	-moz-transition: all 300ms ease-in;
+	-ms-transition: all 300ms ease-in;
+	-o-transition: all 300ms ease-in;
+	transition: all 300ms ease-in;
+}
+
+/** global buttons */
+
+button{
+	display: block;
+	float: left;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	height: 2.5em;
+	min-width: 2.5em;
+	line-height: 2.5em;
+	background: #000;
+	color: #FFF;
+}
+button:hover, button:active{
+	background: #444;
+}
+
+/** menu bar */
+
+.menu_bar{
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+	width: 100%;
+	background: #999;
+}
+
+.menu_bar .left_wrapper{
+	float: left;
+}
+
+.menu_bar .right_wrapper{
+	float: right;
+}
+
+.menu_bar button{
+	width: 2.5em;
+	margin: 0 1em 0 0;
+	text-align: center;
+}
+
+.button_show_menu{}
+.button_show_text{}
+.button_show_draw{}
+
+
+/* edit views */
+
+.view{
+	width: 100%;
+	float: left;
+	margin: 2.5em 0 0 0;
+}
+
+
+/** Text */
+
+.text_edit_view{
+	
+}
+
+.text_area_wrapper{
+	padding: 1em;
+}
+
+.text_edit_view textarea{
+	display: block;
+	border: 0;
+	width: 100%;
+}
+
+
+/** Draw */
+	
+.draw_edit_view{
+	
+}
+
+
+/** Options */
+	
+.option_view{
+
+}
+
+.option_view .tool_wrapper{
+	float:left;
+	width: 100%;
+	margin: 0 0 2.5em 0;
+}
+
+.option_view .tag_wrapper{
+	float:left;
+	width: 100%;
+}
+
+.button_tag{
+	margin: 0 1em 0 0;
+	padding: 0 0 0 0.5em;	
+	
+}
+
+.button_tag span{
+	display: block;
+	float: right;
+	height: 2.5em;
+	width: 2.5em;
+	margin: 0 0 0 0.5em;
+	background: #999;
+	color: #000;
+}
+
+
+
