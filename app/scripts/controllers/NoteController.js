@@ -16,7 +16,7 @@
 
 	angular.module('inotesApp').controller('NoteController', function ($scope, $location, $routeParams, NoteProvider, NotesDirtyService) {
 
-        var model = mockNote;
+        var model = NoteProvider.getNote($routeParams.noteId);
 
         this.showDrawing = function () {
             this.clearDrawing();
