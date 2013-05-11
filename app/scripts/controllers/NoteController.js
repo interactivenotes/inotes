@@ -172,6 +172,24 @@
             canvas.addEventListener('touchend', function () {
                 $scope.onMouseUp();
             });
+					$scope.backToHome = function () {
+						$location.path('/');
+					}
+
+				/*$scope.displayDrawingArea = function () {
+
+				var canvas = document.getElementById("drawing").style.display = 'block';
+				var textarea = document.getElementById("textarea").style.display = 'none';
+
+				}
+
+
+				$scope.displayTextArea = function () {
+
+				var canvas = document.getElementById("drawing").style.display = 'none';
+				var textarea = document.getElementById("textarea").style.display ='block';
+
+				}*/
 
 		});
 }(this));

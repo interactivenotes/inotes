@@ -1,26 +1,36 @@
-    <h2 id="note-text">Note Text</h2>
+<div class="menu_bar">
+    		<div class="left_wrapper">
+    			<button type="button" name="" value="" ng-mouseup="backToHome()" class="button_show_list"><span class="entypo-left-open"></span></button>
+    		</div>
 
-    <div ng-controller="NoteEditTextController" class="view text_edit_view">
+			<div class="right_wrapper" >
+				
+				<button type="button" ng-mouseup="displayDrawingArea()" name="" value="" class="button_show_text highlight"><span class="entypo-doc-text"></span></button>
+				<button type="button" ng-mouseup="displayTextArea()" name="" value="" class="button_show_draw"><span class="entypo-brush"></span></button>
+				<button type="button" ng-mouseup="deleteNote()" name="" value="" class="button_show_menu"><span
+						class="entypo-trash"></span></button>
+			</div>
+<!--
+
+		<div class="right_wrapper">
+			<div class="logo">iNote</div>
+		</div>-->
+	</div>
+
+    <div id="textarea" class="view text_edit_view">
         <div class="text_area_wrapper" >
-            <p ng-model="note.id">Note id {{note.id}}</p>
-            <textarea rows="10" cols="50" ng-model="note.text" ng-change="saveNote()">{{note.text}}</textarea>
+            <!--<p ng-model="note.id">Note id {{note.id}}</p>-->
+            <textarea style="border: 1px solid #555" placeholder="take a note..." rows="10" cols="100" ng-model="note.text" ng-change="saveNote()">{{note.text}}</textarea>
         </div>
     </div>
 
-    <p><button ng-click="saveNote()">Save Note</button></p>
-    <p><button ng-click="deleteNote()">Delete Note</button></p>
-
-    <h2 id="note-drawing">Note Drawing</h2>
-
 	<div class="toolbar">
-		<div class="color" style="background:{{color}}; width: 10px; height: 10px;"></div>
+		<div class="color" style="background:{{color}}; width: 30px; height: 30px;"></div>
 		<div class="btn-group">
-			<input style="float: left; width: 10px; height: 10px; display: block; background: {{color}}; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary" ng-model="$parent.color" value="{{color}}">
+			<input style="float: left; width: 30px; height: 30px; display: block; background: {{color}}; -webkit-appearance: none;" ng-repeat="color in colors" type="radio" class="btn btn-primary" ng-model="$parent.color" value="{{color}}">
 		</div>
 		<div class="current-stroke" style="clear: left; width: {{strokeWidth}}px; height:{{strokeWidth}}px; border-radius: {{visualizeStrokeWidth()}}px; background: {{color}}"></div>
 		<input class="stroke-slider" id="" type="range" min="{{strokeStyle.minWidth}}" max="{{strokeStyle.maxWidth}}" step="{{strokeStyle.step}}" ng-model="strokeWidth" />
-	</div>
-<canvas id="drawing" width="960" height="400" ng-mousedown="onMouseDown()" ng-mousemove="onMouseMove()" ng-mouseup="onMouseUp()"></canvas>
-
-<h2 id="note-options">Note Options</h2>
+	</div> 
+	<canvas id="drawing" style="border: 1px solid #555; display:block; margin: 0 auto" width="960" height="400" ng-mousedown="onMouseDown()" ng-mousemove="onMouseMove()" ng-mouseup="onMouseUp()"></canvas>
 
