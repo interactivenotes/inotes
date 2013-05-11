@@ -17,6 +17,8 @@
         var oldMidPt;
         var isDrawing;
 
+        var currentStroke = null;
+
         canvas = document.getElementById("drawing");
 
         $scope.colors = [
@@ -54,18 +56,33 @@
         stage.update();
 
         $scope.onMouseDown = function() {
-            if (stage.contains(title)) { stage.clear(); stage.removeChild(title); }
+            if (stage.contains(title)) {
+                stage.clear();
+                stage.removeChild(title);
+            }
 
             oldPt = new createjs.Point(stage.mouseX, stage.mouseY);
             oldMidPt = oldPt;
-            isDrawing = true;
 
-            console.info('onMouseDown'+ oldPt);
+            isDrawing = true;
+            currentStroke = {
+                width: $scope.strokeWidth,
+                color: $scope.color,
+                points: []
+            };
+
+            console.info('onMouseDown', oldPt);
         }
 
         $scope.onMouseMove = function() {
             if (isDrawing) {
-                midPt = new createjs.Point((oldPt.x + stage.mouseX) / 2 , (oldPt.y + stage.mouseY) /2);
+                midPt = new createjs.Point((oldPt.x + stage.mouseX) / 2 , (oldPt.y + stage.mouseY) / 2);
+
+                currentStroke.points.push({
+                    x: stage.mouseX,
+                    y: stage.mouseY
+                });
+
                 drawingCanvas.graphics.clear().setStrokeStyle($scope.strokeWidth, 'round', 'round').beginStroke($scope.color).moveTo(midPt.x, midPt.y).curveTo(oldPt.x, oldPt.y, oldMidPt.x, oldMidPt.y);
 
                 oldPt.x = stage.mouseX;
@@ -80,7 +97,8 @@
 
         $scope.onMouseUp = function() {
             isDrawing = false;
-            console.info('onMouseUp');
+            console.info('up', currentStroke);
+            currentStroke = null;
         }
 
 
