@@ -58,7 +58,7 @@
 								console.log(noteKeys);
 								var isInArray = false;
 								for(var i=0; i<noteKeys.length; i++) {
-									if (noteKeys[i] == note['id']) {
+									if (noteKeys[i] === note['id']) {
 										isInArray = true;
 									}
 								}
