@@ -26,14 +26,15 @@ body, button, textarea{
 }
 
 h1{
-	font-size: 1.5em;
-	line-height: 1em;
+	font-size: 2em;
+	line-height: 1.3em;
+	font-weight: normal;
+	margin: 0 0 0.625em 0;
 }
-
 
 /** transitions */
 	
-button, .lane .note{
+button, button span, .note_wrapper, .lane .note{
 	-webkit-transition: all 300ms ease-in;
 	-moz-transition: all 300ms ease-in;
 	-ms-transition: all 300ms ease-in;
@@ -49,15 +50,9 @@ button{
 	border: 0;
 	padding: 0;
 	margin: 0;
-	height: 2.5em;
-	min-width: 2.5em;
-	line-height: 2.5em;
-	background: #767676;
 	color: #ccc;
 }
-button:hover, button:active{
-	background: #0099cc;
-}
+
 
 /** menu bar */
 
@@ -67,6 +62,8 @@ button:hover, button:active{
 	z-index: 9999;
 	width: 100%;
 	background: #555;
+	-webkit-box-shadow: 0 0 0.5em 0 #777777;
+	box-shadow: 0 0 0.5em 0 #777777; 
 }
 
 .menu_bar .left_wrapper{
@@ -86,9 +83,20 @@ button:hover, button:active{
 }	
 
 .menu_bar button{
-	width: 2.5em;
-	margin: 0 1em 0 0;
+	font-size: 1.5em;
+	height: 1.666em;
+	line-height: 1.666em;
 	text-align: center;
+	min-width: 1.666em;
+	background: transparent;
+}
+
+.menu_bar button:hover, .menu_bar button:active, .menu_bar .highlight{
+	background: #0099cc;
+}
+
+.right_wrapper button{
+	margin: 0 0 0 0.8333em;
 }
 
 .button_show_menu{}
@@ -138,7 +146,7 @@ button:hover, button:active{
 .option_view .tool_wrapper{
 	float:left;
 	width: 100%;
-	margin: 0 0 2.5em 0;
+	margin: 1.25em 1em 2.5em 1em;
 }
 
 .option_view .tag_wrapper{
@@ -147,19 +155,61 @@ button:hover, button:active{
 }
 
 .button_tag{
-	margin: 0 1em 0 0;
-	padding: 0 0 0 0.5em;	
+	margin: 0.25em 2.5em 0.25em 0;
+	padding: 0 0 0 0.75em;	
+	line-height: 2.5em;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #FFF;
+	background-color: #33cc99;
+	text-align: left;
 }
 
 .button_tag span{
 	display: block;
 	float: right;
-	height: 2.5em;
-	width: 2.5em;
+	font-size: 1.5em;
+	width: 1.666em;
+	height: 1.666666666666667em;
+	line-height: 1.666666666666667em;
 	margin: 0 0 0 0.5em;
 	background: #999;
 	color: #000;
+	font-weight: 300;
+	color: #33cc99;
+	background-color: #f2f2f2;
+	text-align: center;
 }
+
+.button_tag:hover, .button_tag:active{
+	background-color: #339999;
+}
+
+.button_tag:hover span, .button_tag:active span{
+	color: #339999;
+}
+
+.tag_wrapper{
+	padding: 0 1em;
+}
+
+.tag_wrapper button{
+	margin: 0 1.25em 1.25em 0;
+}
+
+.tool_wrapper button{
+	margin: 0.25em 2.5em 0.25em 0;
+}
+
+.tool_wrapper .button_tag{
+	padding: 0 0.75em 0 0 ;	
+}
+
+.tool_wrapper .button_tag span{
+	float: left;
+	margin: 0 0.5em 0 0;
+}
+
 
 
 /** timeline */
@@ -180,6 +230,7 @@ button:hover, button:active{
 	background-color: #555;
 	width: 50%;
 	float: left;
+	overflow:hidden;
 }
 
 .lane .big_note{
@@ -188,6 +239,7 @@ button:hover, button:active{
 
 .note_preview{
 	padding: 1em;
+	
 }
 
 .big_note .note_preview{
@@ -197,42 +249,62 @@ button:hover, button:active{
 }
 
 .lane .color_0{
-	background-color: #00cc99;
+	background-color: #33cc99;
 }
 .lane .color_1{
-	background-color: #00ff99;
+	background-color: #33f9f9;
 }
 .lane .color_2{
-	background-color: #00ccff;
+	background-color: #85c2c2;
 }
 .lane .color_3{
-	background-color: #3399cc;
+	background-color: #85ffc2;
 }
 .lane .color_4{
-	background-color: #00ffff;
+	background-color: #339999;
 }
 
 .lane .color_5{
-	background-color: #00ffff;
+	background-color: #00cccc;
 }
 .lane .color_6{
-	background-color: #3399cc;
+	background-color: #00ffcc;
 }
 .lane .color_7{
-	background-color: #00ccff;
+	background-color: #66c2e0;
 }
 .lane .color_8{
-	background-color: #00ff99;
+	background-color: #66ffe0;
 }
 .lane .color_9{
-	background-color: #00cc99;
+	background-color: #0099cc;
 }
 
 
-@media only screen and (max-width: 480px){
+
+@media only screen and (max-width: 480px ) and (orientation:portrait){
 	.note_wrapper{
 		width:100%;
-
+	}
+	
+	.tool_wrapper button{
+		float: none;
+		width: 100%;
+	}
+	
+	.option_view .tool_wrapper{
+		margin: 1.25em 0em 2.5em 0em;
 	}
 }
+
+
+
+@media only screen and (min-width: 600px ) {
+	.text_edit_view textarea{
+		width: 40em;
+		margin: 0 auto;
+	}
+}
+
+
 

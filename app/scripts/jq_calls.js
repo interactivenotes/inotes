@@ -7,6 +7,9 @@ $(document).ready(function() {
 		$('.option_view').hide();
 		$('.draw_edit_view').hide();
 		$('.text_edit_view').fadeIn(300);
+		$('.button_show_text').addClass('highlight');
+		$('.button_show_draw').removeClass('highlight');
+		$('.button_show_menu').removeClass('highlight');
 	}); 
 	
 	// draw 
@@ -14,6 +17,9 @@ $(document).ready(function() {
 		$('.text_edit_view').hide();
 		$('.option_view').hide();
 		$('.draw_edit_view').fadeIn(300);
+		$('.button_show_draw').addClass('highlight');
+		$('.button_show_menu').removeClass('highlight');
+		$('.button_show_text').removeClass('highlight');
 	}); 
 	
 	// menu 
@@ -21,6 +27,9 @@ $(document).ready(function() {
 		$('.text_edit_view').hide();
 		$('.draw_edit_view').hide();
 		$('.option_view').fadeIn(300);
+		$('.button_show_menu').addClass('highlight');
+		$('.button_show_draw').removeClass('highlight');
+		$('.button_show_text').removeClass('highlight');
 	}); 
 	
 	
@@ -30,21 +39,6 @@ $(document).ready(function() {
 	
 	var cwb = cws*2;
 	$('.big_note').css({'height':cwb+'px'});
-	
+
 }); 
 
-$(window).bind( 'orientationchange', function(e){
-    if ($.event.special.orientationchange.orientation() == "portrait") {
-        var cws = $('.small_note').width();
-		$('.small_note').css({'height':cws+'px'});
-	
-		var cwb = cws*2;
-		$('.big_note').css({'height':cwb+'px'});
-    } else {
-      	var cws = $('.small_note').width();
-		$('.small_note').css({'height':cws+'px'});
-	
-		var cwb = cws*2;
-		$('.big_note').css({'height':cwb+'px'});
-    }
-});
