@@ -9,7 +9,7 @@
 				this.endpoint = endpoint;
 			}
 
-			this.$get = function ($http) {
+			this.$get = function ($http, NotesDirtyService) {
 				var endpoint = this.endpoint;
 				return {
 					initStorage: function () {
@@ -76,14 +76,13 @@
 							localStorage.clear();
 
 							for(var note in notes){
-								instance.saveNote(notes[note], 'local');
+								instance.saveNote(notes[note], 'init');
 								noteKeys.push(notes[note].id);
 							}
 
 							instance.saveNoteKeys(noteKeys);
 						})
 						.error(function (data, status, headers, config) {
-							/*console.log('Error fetching remote notes');*/
 							throw 'Error fetching remote notes';
 						});
 					},
@@ -97,58 +96,82 @@
 						return note;
 					},
 					saveNote: function (note, mode) {
-						mode = mode || 'local';
-
-						//Remote notes are *always' stored remotely and locally
-						//so there's no break!!!
-						switch (mode) {
-							case 'remote':
-								NoteRemoteProvider.saveNote(note);
-							case 'local':
-							default:
-								localStorage.setItem(note['id'], JSON.stringify(note));
-								var noteKeys = this.getNoteKeys();
-								/*console.log('Notes Keys');
-								console.log(noteKeys);*/
-								var isInArray = false;
-								for(var i=0; i<noteKeys.length; i++) {
-									if (noteKeys[i] === note['id']) {
-										isInArray = true;
-									}
-								}
-								isInArray ? null : noteKeys.push(note['id']) ;
-								//Store TOC in local storage
-								this.saveNoteKeys(noteKeys);
+						localStorage.setItem(note['id'], JSON.stringify(note));
+						var noteKeys = this.getNoteKeys(),
+							isInArray = false;
+						for(var i=0; i<noteKeys.length; i++) {
+							if (noteKeys[i] === note['id']) {
+								isInArray = true;
+							}
 						}
+						isInArray ? null : noteKeys.push(note['id']);
+						
+						if(mode !== 'init'){
+							//Mark note as dirty
+							NotesDirtyService.addNoteId(note['id']);
+						}
+						//Store TOC in local storage
+						this.saveNoteKeys(noteKeys);
+					},
+					saveNoteRemote: function (note) {
+						//TODO implement me!
+						console.info('saveNoteRemote sais: implement me pleeease!!');
+
+						//TODO does not work yet
+						$http.put(endpoint + 'note/' + note.id, note)
+						.success(function (data, status, headers, config) {
+							console.info('success');
+							console.log(data);
+							console.log(status);
+							console.log(headers);
+							console.log(config);
+						})
+						.error(function (data, status, headers, config) {
+							console.info('error');
+							console.log(data);
+							console.log(status);
+							console.log(headers);
+							console.log(config);
+						});
 					},
 					deleteNote: function (noteKey, mode) {
-						mode = mode || 'local';
+						localStorage.removeItem(noteKey);
 
-						//Remote notes are *always* deleted remotely and locally
-						//so there's no break!!!
-						switch (mode) {
-							case 'remote':
-								//NoteRemoteProvider.deleteNote(noteKey);
-							case 'local':
-							default:
-
-								localStorage.removeItem(noteKey);
-
-								//update TOC
-								var noteKeys = this.getNoteKeys();
-								for (var i=0; i < noteKeys.length; i++) {
-									if(noteKeys[i] === noteKey){
-										noteKeys.splice(i, 1);
-										break;
-									}
-								};
-								//Store TOC in local storage
-								this.saveNoteKeys(noteKeys);
-						}
+						//update TOC
+						var noteKeys = this.getNoteKeys();
+						for (var i=0; i < noteKeys.length; i++) {
+							if(noteKeys[i] === noteKey){
+								noteKeys.splice(i, 1);
+								break;
+							}
+						};
+						
+						//Remove from dirty notes index
+						NotesDirtyService.removeNoteId(noteKey);
+						
+						//Store TOC in local storage
+						this.saveNoteKeys(noteKeys);
+					},
+					deleteNoteRemote: function (noteKey) {
+						//TODO implement me!
+						console.info('deleteNoteRemote sais: implement me pleeease!!');
 
 					},
 					saveDirtyNotes: function(){
+						var dirtyNoteIds = NotesDirtyService.getNoteIds();
+						
+						for (var i=0; i < dirtyNoteIds.length; i++) {
+							
+							//Load note from local storage
+							var currentDirtyNoteId = dirtyNoteIds[i],
+							currentDirtyNote = this.getNote(currentDirtyNoteId);
 
+							//Send note to server
+							this.saveNoteRemote(currentDirtyNote);
+							
+							//Remove from dirty notes index
+							NotesDirtyService.removeNoteId(currentDirtyNoteId);
+						};
 					}
 				};
 			};

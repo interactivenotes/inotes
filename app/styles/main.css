@@ -19,10 +19,11 @@ body{
 
 /** content stuff */
 
-body, button, textarea{
+body, button, textarea, .note a{
 	font-family: 'Open Sans', sans-serif;
 	line-height: 1.5em;
 	color: #333;
+	text-decoration:none;
 }
 
 h1{
