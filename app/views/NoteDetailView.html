@@ -1,10 +1,10 @@
 <h2 id="note-text">Note Text</h2>
 
 <div ng-controller="NoteEditTextController" class="view text_edit_view">
-	<!-- <div class="text_area_wrapper">
-		<p>Note id {{note.id}}</p>
-		<textarea rows="10" cols="50" ng-change="saveNote()">{{note.text}}</textarea>
-	</div> -->
+	<div class="text_area_wrapper" >
+		<p ng-model="note.id">Note id {{note.id}}</p>
+		<textarea rows="10" cols="50" ng-model="note.text" ng-change="saveNote()">{{note.text}}</textarea>
+	</div> 
 </div>
 
 <p><button ng-click="saveNote()">Save Note</button></p>
