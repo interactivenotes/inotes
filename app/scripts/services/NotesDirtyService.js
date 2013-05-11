@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('inotesApp')
-		.factory('NotesDirtyProvider', function () {
+		.factory('NotesDirtyService', function () {
 
 			var dirtyNotes = [];
 
