@@ -3,6 +3,8 @@
 
 	angular.module('inotesApp')
 		.provider('NoteProvider', function () {
+			
+			console.log(NotesDirty);
 
 			// localStorage.getItem();
 			// localStorage.setItem();
@@ -22,7 +24,7 @@
 					getNoteList: function () {
 						var
 							ret = [];
-						for (noteKey in noteKeys) {
+						for (noteKey in this.noteKeys) {
 							ret.push(JSON.parse(localStorage.getItem(noteKey)));
 						}
 						return ret;
