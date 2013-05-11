@@ -3,12 +3,12 @@
 
 	angular.module('inotesApp')
 		.provider('Note', function () {
-			
+
 			this.endpoint = 'http://192.168.0.87/web/app_dev.php/inotes/user/noob/';
 			this.setEndpoint = function (endpoint) {
 				this.endpoint = endpoint;
 			}
-			
+
 			this.$get = function ($http) {
 				var endpoint = this.endpoint;
 				return {
@@ -20,7 +20,7 @@
 							//Fetch all notes from remote and store locally
 							this.getNoteListRemote();
 						}catch (e) {
-			
+
 						}
 
 					},
@@ -29,7 +29,7 @@
 						return noteKeys ? noteKeys : [];
 					},
 					saveNoteKeys: function (noteKeys) {
-						console.log('saveNoteKeys');
+						/*console.log('saveNoteKeys');*/
 						//Store TOC in local storage
 						localStorage.setItem('noteKeys', JSON.stringify(noteKeys));
 					},
@@ -57,7 +57,7 @@
 						};
 					},
 					getNoteList: function () {
-						console.log('getNoteList');
+						/*console.log('getNoteList');*/
 						var ret = [],
 							noteKeys = this.getNoteKeys();
 						for (var noteKey in noteKeys) {
@@ -74,16 +74,16 @@
 							noteKeys = [];
 							//Delete locally stored notes
 							localStorage.clear();
-							
+
 							for(var note in notes){
 								instance.saveNote(notes[note], 'local');
 								noteKeys.push(notes[note].id);
 							}
-											
+
 							instance.saveNoteKeys(noteKeys);
 						})
 						.error(function (data, status, headers, config) {
-							console.log('Error fetching remote notes');
+							/*console.log('Error fetching remote notes');*/
 							throw 'Error fetching remote notes';
 						});
 					},
@@ -108,8 +108,8 @@
 							default:
 								localStorage.setItem(note['id'], JSON.stringify(note));
 								var noteKeys = this.getNoteKeys();
-								console.log('Notes Keys');
-								console.log(noteKeys);
+								/*console.log('Notes Keys');
+								console.log(noteKeys);*/
 								var isInArray = false;
 								for(var i=0; i<noteKeys.length; i++) {
 									if (noteKeys[i] === note['id']) {
