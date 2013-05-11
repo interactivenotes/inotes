@@ -85,13 +85,7 @@
 
 			canvas = document.getElementById("drawing");
 
-			$scope.colors = [
-					'#828b20',
-					'#b0ac31',
-					'#cbc53d',
-					'#fad779',
-					'#f9e4ad'
-			];
+            $scope.colors = ['#555555','#999999','#33CC99','#0099CC','#FFCC00','#FF9900','#CC0000'];
 
 			$scope.color = $scope.colors[0];
 
@@ -101,6 +95,10 @@
 				step: 5
 			};
 			$scope.strokeWidth = $scope.strokeStyle.minWidth;
+
+            $scope.visualizeStrokeWidth = function () {
+                return Math.floor(this.strokeWidth / 2);
+            };
 
 			//check to see if we are running in a browser with touch support
 
@@ -134,7 +132,7 @@
 					$scope.note.drawing.strokes.push(currentStroke);
 
 					console.info('onMouseDown', oldPt);
-			}
+			};
 
 			$scope.onMouseMove = function() {
 					if (isDrawing) {
@@ -155,13 +153,25 @@
 
 							stage.update();
 					}
-			}
+			};
 
 			$scope.onMouseUp = function() {
 					isDrawing = false;
 					currentStroke = null;
 					Note.saveNote($scope.note, 'local');
-			}
+			};
+
+            canvas.addEventListener('touchstart', function () {
+                $scope.onMouseDown();
+            });
+
+            canvas.addEventListener('touchmove', function () {
+                $scope.onMouseMove();
+            });
+
+            canvas.addEventListener('touchend', function () {
+                $scope.onMouseUp();
+            });
 
 		});
 }(this));
