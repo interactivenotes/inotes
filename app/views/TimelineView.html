@@ -1,5 +1,18 @@
 <p>This is the TimelineView view.</p>
 
-<ul>
+<div class="lane">
+	<div ng-repeat="note in noteList" class="note_wrapper">
+		<a href="#note/{{note.id}}">
+		<div ng-class="{big_note : $index%4==0, small_note : !($index%4==0), note: true, color_{{$index}}: true}">
+			<div class="note_preview">
+				{{note.text}}
+			</div>
+		</div>
+		</a>
+	</div>
+</div>
+
+
+<!-- <ul>
 	<li ng-repeat="note in noteList"><a href="#note/{{note.id}}">{{note.text}}</li>
-</ul>
+</ul> -->
