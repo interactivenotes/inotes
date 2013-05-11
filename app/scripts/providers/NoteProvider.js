@@ -58,19 +58,20 @@
 						return ret;
 					},
 					getNoteListRemote: function () {
-
+						var instance = this;
 						$http.get(endpoint + 'list', {})
 						.success(function (data, status, headers, config) {
-							console.log(data);
+							var notes = data.notes,
+							noteKeys = [];
 							//Delete locally stored notes
-							// localStorage.clear();
-							// 
-							// for(var note in notes){
-							// 	this.saveNote(note, 'local');
-							// 	noteKeys.push(notes[note].id);
-							// }
-							// 				
-							// this.saveNoteKeys(noteKeys);
+							localStorage.clear();
+							
+							for(var note in notes){
+								instance.saveNote(notes[note], 'local');
+								noteKeys.push(notes[note].id);
+							}
+											
+							instance.saveNoteKeys(noteKeys);
 						})
 						.error(function (data, status, headers, config) {
 							console.log('Error fetching remote notes');

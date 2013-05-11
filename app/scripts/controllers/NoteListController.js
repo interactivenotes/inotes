@@ -8,7 +8,7 @@ angular.module('inotesApp')
 	  Note.initStorage();
 	  
 	  $scope.noteList = Note.getNoteList();
-	  
+	  $scope.noteCssClasses = {largeNote: '', defaultNote: ''};
   });
 
 }());
