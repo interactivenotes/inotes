@@ -1,6 +1,11 @@
 'use strict';
 
 angular.module('inotesApp')
-  .controller('NoteListController', function ($scope, NoteProvider) {
-	  $scope.notes = NoteProvider.getNoteList();
+  .controller('NoteListController', function ($scope, Note, NoteRemote, InitStorageService) {
+	  //Initialize storage
+	  InitStorageService.init();
+	  
+	  $scope.noteList = Note.getNoteList();
+	  
+	  console.log($scope.noteList);
   });

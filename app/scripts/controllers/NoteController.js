@@ -2,22 +2,35 @@
 	'use strict';
 
 	angular.module('inotesApp')
-		.controller('NoteController', function ($scope, $location, $routeParams, NoteProvider, NotesDirtyService) {
+		.controller('NoteController', function ($scope, $location, $routeParams, Note) {
 
-			if ($routeParams.noteId === '') {
-				$location.path('/');
+			$scope.note = null;
+
+			if ($routeParams.noteId !== '') {
+				$scope.note = Note.getNote($routeParams.noteId); 
+				if($scope.note === null){
+					console.log('Note not found using id ' + $routeParams.noteId);
+					$location.path('/');
+					return false;
+				}
 			}
 
+			if($scope.note === null){
+				$scope.note = Note.createNote();
+				console.log('created note ' + $scope.note.id);
+			}
 
-			// var noteId = $routeParams.noteId,
-			// currentNote = NoteProvider.getNote(noteId);
-
-
-
-			NotesDirtyService.addNoteId($routeParams.noteId);
-
-			console.info('Dirty notes:')
-			console.info(NotesDirtyService.getNoteIds());
-
+			$scope.saveNote = function() {				
+			    Note.saveNote($scope.note, 'local');
+				console.log('Saved note with id ' + $scope.note.id);
+			}
+			
+			$scope.deleteNote = function() {
+				var confirmDelete = confirm('Do you really want to delete this note?');
+				if (confirmDelete === true) {
+					Note.deleteNote($scope.note.id, 'local');	
+					$location.path('/');
+				};
+			}
 		});
 }());

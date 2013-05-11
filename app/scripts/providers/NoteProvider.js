@@ -2,32 +2,40 @@
 	'use strict';
 
 	angular.module('inotesApp')
-		.provider('NoteProvider', function () {
-
-
-			// localStorage.getItem();
-			// localStorage.setItem();
-
-			//Delete locally stored notes
-			localStorage.clear();
-
-			//Fetch all notes from remote and store locally
-
-			//Build noteKeys (from server list)
-
-			this.noteKeys = localStorage.getItem('noteKeys');
-
+		.provider('Note', function () {
 
 			this.$get = function () {
 				return {
+					getNoteKeys: function () {
+						return JSON.parse(localStorage.getItem('noteKeys'));
+					},
+					saveNoteKeys: function (noteKeys) {
+						console.log('saveNoteKeys');
+						//Store TOC in local storage
+						localStorage.setItem('noteKeys', JSON.stringify(noteKeys));
+					},
+					generateId: function () {
+						var s = [],
+					    	hexDigits = "0123456789abcdef";
+					    for (var i = 0; i < 36; i++) {
+					        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+					    }
+						return s.join('');
+					},
+					createNote: function () {
+						var id = this.generateId();
+						
+						return {id: id};
+					},
 					getNoteList: function () {
-						var
-							ret = [];
-						for (noteKey in this.noteKeys) {
-							ret.push(JSON.parse(localStorage.getItem(noteKey)));
+						console.log('getNoteList');
+						var ret = [],
+							noteKeys = this.getNoteKeys();
+						for (var noteKey in noteKeys) {
+							ret.push(JSON.parse(localStorage.getItem(noteKeys[noteKey])));
 						}
+						
 						return ret;
-
 					},
 					getNote: function (noteKey) {
 						return JSON.parse(localStorage.getItem(noteKey));
@@ -39,10 +47,14 @@
 						//so there's no break!!!
 						switch (mode) {
 							case 'remote':
-								NoteRemoteProvider.saveNote(note);
+								//NoteRemoteProvider.saveNote(note);
 							case 'local':
 							default:
-								localStorage.setItem(note.id, JSON.stringify(note));
+								localStorage.setItem(note['id'], JSON.stringify(note));
+								var noteKeys = this.getNoteKeys();
+								noteKeys.push(note['id']);
+								//Store TOC in local storage
+								this.saveNoteKeys(noteKeys);
 						}
 					},
 					deleteNote: function (noteKey, mode) {
@@ -52,10 +64,22 @@
 						//so there's no break!!!
 						switch (mode) {
 							case 'remote':
-								NoteRemoteProvider.deleteNote(noteKey);
+								//NoteRemoteProvider.deleteNote(noteKey);
 							case 'local':
 							default:
+
 								localStorage.removeItem(noteKey);
+								
+								//update TOC
+								var noteKeys = this.getNoteKeys();
+								for (var i=0; i < noteKeys.length; i++) {
+									if(noteKeys[i] === noteKey){
+										noteKeys.splice(i, 1);
+										break;
+									}
+								};
+								//Store TOC in local storage
+								this.saveNoteKeys(noteKeys);
 						}
 
 					},
