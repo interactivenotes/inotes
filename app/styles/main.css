@@ -22,6 +22,7 @@ body{
 body, button, textarea{
 	font-family: 'Open Sans', sans-serif;
 	line-height: 1.5em;
+	color: #333;
 }
 
 h1{
@@ -51,11 +52,11 @@ button{
 	height: 2.5em;
 	min-width: 2.5em;
 	line-height: 2.5em;
-	background: #000;
-	color: #FFF;
+	background: #767676;
+	color: #ccc;
 }
 button:hover, button:active{
-	background: #444;
+	background: #0099cc;
 }
 
 /** menu bar */
@@ -65,7 +66,7 @@ button:hover, button:active{
 	top: 0;
 	z-index: 9999;
 	width: 100%;
-	background: #999;
+	background: #555;
 }
 
 .menu_bar .left_wrapper{
@@ -75,6 +76,14 @@ button:hover, button:active{
 .menu_bar .right_wrapper{
 	float: right;
 }
+
+.logo{
+	float:right;
+	height: 2.5em;
+	margin: 0 1em;
+	line-height: 2.5em;
+	color: #fff;
+}	
 
 .menu_bar button{
 	width: 2.5em;
@@ -140,7 +149,6 @@ button:hover, button:active{
 .button_tag{
 	margin: 0 1em 0 0;
 	padding: 0 0 0 0.5em;	
-	
 }
 
 .button_tag span{
@@ -154,4 +162,82 @@ button:hover, button:active{
 }
 
 
+/** timeline */
+	
+
+.lane{
+	width: 100%;
+	float: left;
+	margin: 2.5em 0 0 0;
+}
+
+.note_wrapper{
+	width:50%;
+	float:left;
+}
+
+.lane .note{
+	background-color: #555;
+	width: 50%;
+	float: left;
+}
+
+
+.lane .note:hover, .lane .note:active{
+	opacity: 
+}
+
+.lane .big_note{
+	width: 100%;
+}
+
+.note_preview{
+	padding: 1em;
+}
+
+.big_note .note_preview{
+	font-size: 2em;
+	line-height: 1.3em;
+	padding: 0.5em;
+}
+
+.lane .color_0{
+	background-color: #00cc99;
+}
+.lane .color_1{
+	background-color: #00ff99;
+}
+.lane .color_2{
+	background-color: #00ccff;
+}
+.lane .color_3{
+	background-color: #3399cc;
+}
+.lane .color_4{
+	background-color: #00ffff;
+}
+
+.lane .color_5{
+	background-color: #00ffff;
+}
+.lane .color_6{
+	background-color: #3399cc;
+}
+.lane .color_7{
+	background-color: #00ccff;
+}
+.lane .color_8{
+	background-color: #00ff99;
+}
+.lane .color_9{
+	background-color: #00cc99;
+}
+
+
+@media only screen and (max-width: 480px){
+	.note_wrapper{
+		width:100%;
+
+	}
+}
 
