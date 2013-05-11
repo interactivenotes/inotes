@@ -7,6 +7,7 @@
 			this.setEnpoint = function (newEndpoint) {
 				this.endpoint = newEndpoint;
 			};
+			this.notes = [];
 			this.$get = function () {
 				var
 					endpoint = this.endpoint,
