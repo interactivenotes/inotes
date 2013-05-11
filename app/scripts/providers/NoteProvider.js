@@ -27,7 +27,16 @@
 					createNote: function () {
 						var id = this.generateId();
 
-						return {id: id, creationDate: new Date().toISOString()};
+						return {
+							id: id,
+							creationDate: new Date().toISOString(),
+							modificationDate: null,
+							thumbnail: null,
+							drawing:{
+								strokes: [
+								]
+							}
+						};
 					},
 					getNoteList: function () {
 						console.log('getNoteList');
@@ -40,7 +49,13 @@
 						return ret;
 					},
 					getNote: function (noteKey) {
-						return JSON.parse(localStorage.getItem(noteKey));
+						var note = JSON.parse(localStorage.getItem(noteKey));
+						if (!note) {
+							note = this.createNote();
+						}
+						note.drawing = note.drawing || {};
+						note.drawing.strokes = note.drawing.strokes || [];
+						return note;
 					},
 					saveNote: function (note, mode) {
 						mode = mode || 'local';
