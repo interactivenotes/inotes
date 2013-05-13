@@ -21,9 +21,9 @@
 				.otherwise({
 					redirectTo: '/'
 				});
-		}).run(function (Note) {
+		}).run(function (Note, NoteSaveRemoteService) {
 	  	  //@todo move to somewhere where it's only called once!
 	  	  Note.initStorage();
-		  console.log('harrrr');
+		  NoteSaveRemoteService.startInterval();
 		});
 }());
