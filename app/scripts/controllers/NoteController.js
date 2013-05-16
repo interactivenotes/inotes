@@ -31,10 +31,10 @@
 				Note.saveNote($scope.note, 'local');
 				/*console.log($scope.note);*/
 				$scope.note.modificationDate = new Date().toISOString();
-				if (location.hash.search($scope.note.id) === -1) {
-					location.hash = location.hash + $scope.note.id;
-					//$location.url(currUrl + $scope.note.id);
-				}
+				// if (location.hash.search($scope.note.id) === -1) {
+				// 	location.hash = location.hash + $scope.note.id;
+				// 	//$location.url(currUrl + $scope.note.id);
+				// }
 				/*console.log('Saved note with id ' + $scope.note.id);*/
 			};
 

@@ -6,12 +6,9 @@
 	  
 		var notes = Note.getNoteList(),
 		noteGroups = [],
-		currEl = undefined;
+		currEl = {};
 		for (var i=0; i < notes.length; i++) {
-			if (i%5==0) {
-				if(i>0){
-					noteGroups.push(currEl);
-				}
+			if (i==0||i%5==0) {
 				currEl = {
 					bigNote: {
 						note: notes[i],
@@ -19,6 +16,7 @@
 					},
 					smallNotes: []
 				};
+				noteGroups.push(currEl);
 			}else{
 				currEl.smallNotes.push({
 					note: notes[i],
@@ -26,7 +24,6 @@
 				})
 			}
 		};
-
 		$scope.noteGroups = noteGroups;
 		$scope.test = function () {
 			return true;

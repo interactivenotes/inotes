@@ -4,7 +4,7 @@
 	angular.module('inotesApp')
 		.provider('Note', function () {
 
-			this.endpoint = 'http://192.168.0.87/web/app_dev.php/inotes/user/noob/';
+			this.endpoint = 'http://178.238.227.69/inotes-be/web/app_dev.php/inotes/user/noob/';
 			this.setEndpoint = function (endpoint) {
 				this.endpoint = endpoint;
 			}
@@ -114,24 +114,32 @@
 						this.saveNoteKeys(noteKeys);
 					},
 					saveNoteRemote: function (note) {
-						//TODO implement me!
-						console.info('saveNoteRemote sais: implement me pleeease!!');
-
-						//TODO does not work yet
+						// console.info('saveNoteRemote sais: implement me pleeease!!');
+						var instance = this;
 						$http.put(endpoint + 'note/' + note.id, note)
 						.success(function (data, status, headers, config) {
-							console.info('success');
-							console.log(data);
-							console.log(status);
-							console.log(headers);
-							console.log(config);
+							instance.saveNote(data);
 						})
 						.error(function (data, status, headers, config) {
-							console.info('error');
-							console.log(data);
-							console.log(status);
-							console.log(headers);
-							console.log(config);
+							console.info('error savong note remote');
+							// console.log(data);
+							// console.log(status);
+							// console.log(headers);
+							// console.log(config);
+						});
+					},
+					createNoteRemote: function (note) {
+						var instance = this;
+						$http.post(endpoint + 'note', note)
+						.success(function (data, status, headers, config) {
+							instance.saveNote(data);
+						})
+						.error(function (data, status, headers, config) {
+							console.info('error creating note remote');
+							// console.log(data);
+							// console.log(status);
+							// console.log(headers);
+							// console.log(config);
 						});
 					},
 					deleteNote: function (noteKey, mode) {
@@ -166,8 +174,12 @@
 							var currentDirtyNoteId = dirtyNoteIds[i],
 							currentDirtyNote = this.getNote(currentDirtyNoteId);
 
-							//Send note to server
-							this.saveNoteRemote(currentDirtyNote);
+							if(typeof currentDirtyNote.remoteId !== 'undefined' && currentDirtyNote.remoteId !== ''){
+								//Send note to server
+								this.saveNoteRemote(currentDirtyNote);
+							}else{
+								this.createNoteRemote(currentDirtyNote);
+							}
 							
 							//Remove from dirty notes index
 							NotesDirtyService.removeNoteId(currentDirtyNoteId);
