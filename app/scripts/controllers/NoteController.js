@@ -41,8 +41,8 @@
 			$scope.deleteNote = function() {
 				var confirmDelete = confirm('Do you really want to delete this note?');
 				if (confirmDelete === true) {
-					Note.deleteNote($scope.note.id, 'local');
-					$location.path('/');
+					Note.deleteNote($scope.note.id, 'remote');
+					$location.path('/notes');
 				};
 			}
 
@@ -182,7 +182,7 @@
                 $scope.onMouseUp();
             });
 					$scope.backToHome = function () {
-						$location.path('/');
+						$location.path('/notes');
 					}
 
 				$scope.displayDrawingArea = function () {

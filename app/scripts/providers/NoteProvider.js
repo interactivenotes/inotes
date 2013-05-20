@@ -143,6 +143,11 @@
 						});
 					},
 					deleteNote: function (noteKey, mode) {
+
+						if (mode === 'remote') {
+							this.deleteNoteRemote(noteKey);
+						}
+						
 						localStorage.removeItem(noteKey);
 
 						//update TOC
@@ -161,8 +166,18 @@
 						this.saveNoteKeys(noteKeys);
 					},
 					deleteNoteRemote: function (noteKey) {
-						//TODO implement me!
-						console.info('deleteNoteRemote sais: implement me pleeease!!');
+						var instance = this;
+						$http.delete(endpoint + 'note/' + noteKey, {})
+						.success(function (data, status, headers, config) {
+
+						})
+						.error(function (data, status, headers, config) {
+							console.info('error deleting note remote');
+							// console.log(data);
+							// console.log(status);
+							// console.log(headers);
+							// console.log(config);
+						});
 
 					},
 					saveDirtyNotes: function(){
