@@ -72,6 +72,8 @@
 						.success(function (data, status, headers, config) {
 							var notes = data.notes,
 							noteKeys = [];
+							
+							//TODO only remove notes from local storage
 							//Delete locally stored notes
 							localStorage.clear();
 
@@ -116,7 +118,7 @@
 					saveNoteRemote: function (note) {
 						// console.info('saveNoteRemote sais: implement me pleeease!!');
 						var instance = this;
-						$http.put(endpoint + 'note/' + note.id, note)
+						$http.put(endpoint + 'note/' + note.remoteId, note)
 						.success(function (data, status, headers, config) {
 							instance.saveNote(data);
 						})
@@ -143,9 +145,11 @@
 						});
 					},
 					deleteNote: function (noteKey, mode) {
+						
+						var note = this.getNote(noteKey);
 
 						if (mode === 'remote') {
-							this.deleteNoteRemote(noteKey);
+							this.deleteNoteRemote(note.remoteId);
 						}
 						
 						localStorage.removeItem(noteKey);
