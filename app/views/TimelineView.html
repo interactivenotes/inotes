@@ -11,7 +11,7 @@
 			<div class="note big_note color_{{noteGroup.bigNote.classIndex}}">
 				<a href="#/note/{{noteGroup.bigNote.note.id}}">
 				<div class="note_preview">
-					{{noteGroup.bigNote.note.text}}
+					{{noteGroup.bigNote.note.text|Truncate:180}}
 				</div>
 				</a>
 			</div>
@@ -20,15 +20,10 @@
 			<div ng-repeat="smallNote in noteGroup.smallNotes" class="note small_note color_{{smallNote.classIndex}}">
 				<a href="#/note/{{smallNote.note.id}}">
 				<div class="note_preview">
-					{{smallNote.note.text}}
+					{{smallNote.note.text|Truncate:120}}
 				</div>
 				</a>
 			</div>
 		</div>
     </div>
 </div>
-
-
-<!-- <ul>
-	<li ng-repeat="note in noteList"><a href="#note/{{note.id}}">{{note.text}}</li>
-</ul> -->

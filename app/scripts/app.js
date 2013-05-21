@@ -6,6 +6,10 @@
 			$routeProvider
 				.when('/', {
 					templateUrl: 'views/TimelineView.html',
+					controller: 'InitController'
+				})
+				.when('/notes', {
+					templateUrl: 'views/TimelineView.html',
 					controller: 'NoteListController'
 				})
 				.when('/note/:noteId', {
@@ -19,11 +23,7 @@
 					controller: 'NoteDeleteController'
 				})
 				.otherwise({
-					redirectTo: '/'
+					redirectTo: '/notes'
 				});
-		}).run(function (Note, NoteSaveRemoteService) {
-	  	  //@todo move to somewhere where it's only called once!
-	  	  Note.initStorage();
-		  NoteSaveRemoteService.startInterval();
 		});
 }());

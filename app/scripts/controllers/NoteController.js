@@ -31,18 +31,18 @@
 				Note.saveNote($scope.note, 'local');
 				/*console.log($scope.note);*/
 				$scope.note.modificationDate = new Date().toISOString();
-				if (location.hash.search($scope.note.id) === -1) {
-					location.hash = location.hash + $scope.note.id;
-					//$location.url(currUrl + $scope.note.id);
-				}
+				// if (location.hash.search($scope.note.id) === -1) {
+				// 	location.hash = location.hash + $scope.note.id;
+				// 	//$location.url(currUrl + $scope.note.id);
+				// }
 				/*console.log('Saved note with id ' + $scope.note.id);*/
 			};
 
 			$scope.deleteNote = function() {
 				var confirmDelete = confirm('Do you really want to delete this note?');
 				if (confirmDelete === true) {
-					Note.deleteNote($scope.note.id, 'local');
-					$location.path('/');
+					Note.deleteNote($scope.note.id, 'remote');
+					$location.path('/notes');
 				};
 			}
 
@@ -182,7 +182,7 @@
                 $scope.onMouseUp();
             });
 					$scope.backToHome = function () {
-						$location.path('/');
+						$location.path('/notes');
 					}
 
 				$scope.displayDrawingArea = function () {
