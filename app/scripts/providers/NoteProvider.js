@@ -24,6 +24,7 @@
 						}
 
 					},
+
 					getNoteKeys: function () {
 						var noteKeys = JSON.parse(localStorage.getItem('noteKeys'));
 						return noteKeys ? noteKeys : [];
@@ -105,7 +106,7 @@
 							}
 						}
 						isInArray ? null : noteKeys.push(note['id']);
-						
+
 						if(mode !== 'init'){
 							//Mark note as dirty
 							NotesDirtyService.addNoteId(note['id']);
@@ -145,10 +146,10 @@
 								break;
 							}
 						};
-						
+
 						//Remove from dirty notes index
 						NotesDirtyService.removeNoteId(noteKey);
-						
+
 						//Store TOC in local storage
 						this.saveNoteKeys(noteKeys);
 					},
@@ -159,16 +160,16 @@
 					},
 					saveDirtyNotes: function(){
 						var dirtyNoteIds = NotesDirtyService.getNoteIds();
-						
+
 						for (var i=0; i < dirtyNoteIds.length; i++) {
-							
+
 							//Load note from local storage
 							var currentDirtyNoteId = dirtyNoteIds[i],
 							currentDirtyNote = this.getNote(currentDirtyNoteId);
 
 							//Send note to server
 							this.saveNoteRemote(currentDirtyNote);
-							
+
 							//Remove from dirty notes index
 							NotesDirtyService.removeNoteId(currentDirtyNoteId);
 						};
