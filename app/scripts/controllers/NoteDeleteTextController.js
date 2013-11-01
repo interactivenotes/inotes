@@ -1,5 +1,6 @@
-(function () {
+(function (window) {
 	'use strict';
+	var angular = window.angular;
 
 	angular.module('inotesApp')
 		.controller('NoteDeleteTextControllerCtrl', function ($scope) {
@@ -9,4 +10,4 @@
 				'Karma'
 			];
 		});
-}());
+}(this));

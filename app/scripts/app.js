@@ -1,5 +1,6 @@
-(function () {
+(function (window) {
 	'use strict';
+	var angular = window.angular;
 
 	angular.module('inotesApp', [])
 		.config(function ($routeProvider) {
@@ -26,4 +27,4 @@
 					redirectTo: '/notes'
 				});
 		});
-}());
+}(this));

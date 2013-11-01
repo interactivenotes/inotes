@@ -1,16 +1,20 @@
-'use strict';
+(function (window) {
+	'use strict';
 
-angular.module('inotesApp')
-  .controller('InitController', function ($scope, $location, Note, NoteSaveRemoteService) {
-	  //TODO Check for configuration
-	  
-	  if (false) {
-	  	$location.path('/config');
-	  }
+	var angular = window.angular;
 
-	  //Initialize App
-  	  Note.initStorage();
-	  NoteSaveRemoteService.startInterval();
-	  
-	  $location.path('/notes');
-  });
+	angular.module('inotesApp')
+		.controller('InitController', function ($scope, $location, Note, NoteSaveRemoteService) {
+			//TODO Check for configuration
+
+			$location.path('/config');
+
+			//Initialize App
+			Note.initStorage();
+			NoteSaveRemoteService.startInterval();
+
+			$location.path('/notes');
+		});
+}(this));
+
+

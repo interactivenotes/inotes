@@ -1,17 +1,25 @@
-'use strict';
+(function (window) {
+	'use strict';
 
-angular.module('inotesApp')
-  .factory('NoteSaveRemoteService', function (Note) {
+	var angular = window.angular;
 
-	  var intervalLength = 10000;
+	angular.module('inotesApp')
+		.factory('NoteSaveRemoteService', function (Note) {
 
-    return {
-      startInterval: function () {
-        
-		  setInterval(function() {
-			  Note.saveDirtyNotes();
-		  }, intervalLength);
-	  
-      }
-    };
-  });
+			var intervalLength = 10000;
+
+			return {
+				startInterval: function () {
+
+					window.setInterval(function () {
+						Note.saveDirtyNotes();
+					}, intervalLength);
+
+				}
+			};
+		});
+}(this));
+
+
+
+
