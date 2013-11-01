@@ -184,12 +184,12 @@
 						$http.delete(endpoint + 'note/' + noteKey, {})
 							/*.success(function (data, status, headers, config) {
 							})*/
-							.error(function () {
+							.error(function (data, status, headers, config) {
 								window.console.info('error deleting note remote');
-									// console.log(data);
-									// console.log(status);
-									// console.log(headers);
-									// console.log(config);
+									 console.log(data);
+									 console.log(status);
+									 console.log(headers);
+									 console.log(config);
 							});
 
 					},

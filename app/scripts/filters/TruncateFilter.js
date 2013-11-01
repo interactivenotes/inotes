@@ -27,6 +27,10 @@
 		 * @return string
 		 */
 			return function (text, length, end) {
+				if(typeof text === 'undefined'){
+					text = '';
+				}
+
 				if (isNaN(length)) {
 					length = 10;
 				}
