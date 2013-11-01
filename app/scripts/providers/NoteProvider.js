@@ -5,7 +5,7 @@
 	angular.module('inotesApp')
 		.provider('Note', function () {
 
-			this.endpoint = '/inotes/web/app_dev.php/inotes/user/noob/';
+			this.endpoint = 'http://inotes.virtual/app_dev.php/inotes/user/noob/';
 			this.setEndpoint = function (endpoint) {
 				this.endpoint = endpoint;
 			};
