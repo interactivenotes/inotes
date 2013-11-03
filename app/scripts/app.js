@@ -26,5 +26,10 @@
 				.otherwise({
 					redirectTo: '/notes'
 				});
-		});
+		})
+        .run(function(Note, NoteSaveRemoteService) {
+			//Initialize App
+			Note.initStorage();
+            NoteSaveRemoteService.startInterval();
+        });
 }(this));

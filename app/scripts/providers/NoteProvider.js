@@ -161,6 +161,13 @@
 							i;
 
 						if (mode === 'remote') {
+                            var noteRemoteId;
+                            if (typeof note.remoteId === 'undefined') {
+                                var noteRemoteId = note.id;
+                            }else{
+                                var noteRemoteId = note.remoteId;
+                            }
+
 							this.deleteNoteRemote(note.remoteId);
 						}
 

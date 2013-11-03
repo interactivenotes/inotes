@@ -4,14 +4,10 @@
 	var angular = window.angular;
 
 	angular.module('inotesApp')
-		.controller('InitController', function ($scope, $location, Note, NoteSaveRemoteService) {
+		.controller('InitController', function ($scope, $location) {
 			//TODO Check for configuration
 
-			$location.path('/config');
-
-			//Initialize App
-			Note.initStorage();
-			NoteSaveRemoteService.startInterval();
+            // $location.path('/config');
 
 			$location.path('/notes');
 		});
